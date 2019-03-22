@@ -1,0 +1,447 @@
+[
+    {
+
+        "item": {
+            "name": "aaa",
+            "switch": "-aaa",
+            "description": "No parameters provided, the default variable to be used",
+            "pos": 1,
+            "must": true,
+            "default": "bbb"
+        },
+        "argv": [
+            "node.exe",
+            "run"
+        ],
+        "env": {},
+        "prompt": {
+            "plain": "",
+            "secret": ""
+        },
+        "expected_rezult": {
+            "resolved": true,
+            "params": {
+                "aaa": "bbb"
+            },
+            "error_msg": ""
+        }
+    },
+    {
+
+        "item": {
+            "name": "aaa",
+            "switch": "-aaa",
+            "description": "No parameters provided, but it is mandatory, so an exception to be raised",
+            "pos": 1,
+            "must": true
+        },
+        "argv": [
+            "node",
+            "run"
+        ],
+        "env": {},
+        "prompt": {
+            "plain": "",
+            "secret": ""
+        },
+        "expected_rezult": {
+            "resolved": false,
+            "params": {
+                "aaa": "bbb"
+            },
+            "error_msg": "Missing mandatory parameter aaa"
+        }
+    },
+    {
+
+        "item": {
+            "name": "aaa",
+            "switch": "-aaa",
+            "description": "No parameters provided, but it is mandatory, so an exception to be raised with the custom error text",
+            "pos": 1,
+            "must": true,
+            "error_msg": "this is the error to be provided"
+        },
+        "argv": [
+            "node",
+            "run"
+        ],
+        "env": {},
+        "prompt": {
+            "plain": "",
+            "secret": ""
+        },
+        "expected_rezult": {
+            "resolved": false,
+            "params": {
+                "aaa": "bbb"
+            },
+            "error_msg": "this is the error to be provided"
+        }
+    },    
+    {
+
+        "item": {
+            "name": "aaa",
+            "switch": "-aaa",
+            "description": "No parameters provided, but it is optional, so no parameter to be resolved",
+            "pos": 1,
+            "must": true
+        },
+        "argv": [
+            "node",
+            "run"
+        ],
+        "env": {},
+        "prompt": {
+            "plain": "",
+            "secret": ""
+        },
+        "expected_rezult": {
+            "resolved": false,
+            "params": {},
+            "error_msg": "Missing mandatory parameter aaa"
+        }
+    },    
+    {
+
+        "item": {
+            "name": "aaa",
+            "switch": "-aaa",
+            "description": "No parameters provided, but it is optional, so to be resolved as {}",
+            "pos": 1
+        },
+        "argv": [
+            "node",
+            "run"
+        ],
+        "env": {},
+        "prompt": {
+            "plain": "",
+            "secret": ""
+        },
+        "expected_rezult": {
+            "resolved": true,
+            "params": {},
+            "error_msg": ""
+        }
+    },        
+    {
+        "item": {
+            "name": "aaa",
+            "switch": "-aaa",
+            "description": "CLI switch provided, the parameter is mandatory, so value should be 'ccc'",
+            "pos": 1,
+            "must": true,
+            "default": "bbb"
+        },
+        "argv": [
+            "node",
+            "run",
+            "-aaa",
+            "ccc"
+        ],
+        "env": {},
+        "prompt": {
+            "plain": "",
+            "secret": ""
+        },
+        "expected_rezult": {
+            "resolved": true,
+            "params": {
+                "aaa": "ccc"
+            },
+            "error_msg": ""
+        }
+    },
+    {
+        "item": {
+            "name": "aaa",
+            "switch": "-aaa",
+            "description": "CLI switch provided, the parameter is mandatory, but the pos = 0 so value should be '-aaa'",
+            "pos": 0,
+            "must": true,
+            "default": "bbb"
+        },
+        "argv": [
+            "node",
+            "run",
+            "-aaa",
+            "ccc"
+        ],
+        "env": {},
+        "prompt": {
+            "plain": "",
+            "secret": ""
+        },
+        "expected_rezult": {
+            "resolved": true,
+            "params": {
+                "aaa": "-aaa"
+            },
+            "error_msg": ""
+        }
+    },    
+    {
+        "item": {
+            "name": "aaa",
+            "switch": "-aaa",
+            "description": "CLI switch provided, the parameter is mandatory, but no pos provided, so value should be '-aaa'",
+            "must": true,
+            "default": "bbb"
+        },
+        "argv": [
+            "node",
+            "run",
+            "-aaa",
+            "ccc"
+        ],
+        "env": {},
+        "prompt": {
+            "plain": "",
+            "secret": ""
+        },
+        "expected_rezult": {
+            "resolved": true,
+            "params": {
+                "aaa": "-aaa"
+            },
+            "error_msg": ""
+        }
+    },        
+    {
+
+        "item": {
+            "name": "aaa",
+            "switch": "-aaa",
+            "description": "CLI switch provided, the parameter is optional, so value should be 'ccc'",
+            "pos": 1,
+            "must": false,
+            "default": "bbb"
+        },
+        "argv": [
+            "node",
+            "run",
+            "-aaa",
+            "ccc"
+        ],
+        "env": {},
+        "prompt": {
+            "plain": "",
+            "secret": ""
+        },
+        "expected_rezult": {
+            "resolved": true,
+            "params": {
+                "aaa": "ccc"
+            },
+            "error_msg": ""
+        }
+    },    
+    {
+
+        "item": {
+            "name": "aaa",
+            "switch": "-aaa",
+            "description": "CLI switch provided, ENV variable provided, the CLI switch shall overwrite, so value should be 'cli'",
+            "pos": 1,
+            "must": true,
+            "default": "bbb"
+        },
+        "argv": [
+            "node",
+            "run",
+            "-aaa",
+            "cli"
+        ],
+        "env": {
+            "aaa": "env"
+        },
+        "prompt": {
+            "plain": "",
+            "secret": ""
+        },
+        "expected_rezult": {
+            "resolved": true,
+            "params": {
+                "aaa": "cli"
+            },
+            "error_msg": ""
+        }
+    },
+    {
+
+        "item": {
+            "name": "aaa",
+            "switch": "-aaa",
+            "description": "CLI switch provided, ENV variable provided, an input requested, the CLI switch shall overwrite, so value should be 'cli'",
+            "pos": 1,
+            "must": true,
+            "prompt": "input",
+            "default": "bbb"
+        },
+        "argv": [
+            "node",
+            "run",
+            "-aaa",
+            "cli"
+        ],
+        "env": {
+            "aaa": "env"
+        },
+        "prompt": {
+            "plain": "plain",
+            "secret": "secret"
+        },
+        "expected_rezult": {
+            "resolved": true,
+            "params": {
+                "aaa": "cli"
+            },
+            "error_msg": ""
+        }
+    },    
+    {
+
+        "item": {
+            "name": "aaa",
+            "switch": "-aaa",
+            "description": "No CLI, ENV variable provided so value should be 'env'",
+            "pos": 1,
+            "must": true,
+            "default": "bbb"
+        },
+        "argv": [
+            "node",
+            "run"
+        ],
+        "env": {
+            "aaa": "env"
+        },
+        "prompt": {
+            "plain": "",
+            "secret": ""
+        },
+        "expected_rezult": {
+            "resolved": true,
+            "params": {
+                "aaa": "env"
+            },
+            "error_msg": ""
+        }
+    },
+    {
+
+        "item": {
+            "name": "aaa",
+            "switch": "-aaa",
+            "description": "No CLI, ENV variable provided, param is optional, so value should be 'env'",
+            "pos": 1,
+            "default": "bbb"
+        },
+        "argv": [
+            "node",
+            "run"
+        ],
+        "env": {
+            "aaa": "env"
+        },
+        "prompt": {
+            "plain": "",
+            "secret": ""
+        },
+        "expected_rezult": {
+            "resolved": true,
+            "params": {
+                "aaa": "env"
+            },
+            "error_msg": ""
+        }
+    },    
+    {
+
+        "item": {
+            "name": "aaa",
+            "switch": "-aaa",
+            "description": "No CLI, ENV variable provided, an input requested, value should be 'env'",
+            "pos": 1,
+            "default": "bbb",
+            "prompt": "input"
+        },
+        "argv": [
+            "node",
+            "run"
+        ],
+        "env": {
+            "aaa": "env"
+        },
+        "prompt": {
+            "plain": "",
+            "secret": ""
+        },
+        "expected_rezult": {
+            "resolved": true,
+            "params": {
+                "aaa": "env"
+            },
+            "error_msg": ""
+        }
+    },        
+    {
+
+        "item": {
+            "name": "aaa",
+            "switch": "-aaa",
+            "description": "No CLI, no ENV, an input requested, value should be 'plain'",
+            "pos": 1,
+            "default": "bbb",
+            "prompt": "input"
+        },
+        "argv": [
+            "node",
+            "run"
+        ],
+        "env": {
+        },
+        "prompt": {
+            "plain": "plain",
+            "secret": "secret"
+        },
+        "expected_rezult": {
+            "resolved": true,
+            "params": {
+                "aaa": "plain"
+            },
+            "error_msg": ""
+        }
+    },            
+    {
+
+        "item": {
+            "name": "aaa",
+            "switch": "-aaa",
+            "description": "No CLI, no ENV, a secure input requested, value should be 'secret'",
+            "pos": 1,
+            "default": "bbb",
+            "prompt": "input",
+            "secret": true
+        },
+        "argv": [
+            "node",
+            "run"
+        ],
+        "env": {
+        },
+        "prompt": {
+            "plain": "plain",
+            "secret": "secret"
+        },
+        "expected_rezult": {
+            "resolved": true,
+            "params": {
+                "aaa": "secret"
+            },
+            "error_msg": ""
+        }
+    }
+]
