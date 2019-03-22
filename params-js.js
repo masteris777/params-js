@@ -3,11 +3,19 @@
  * This module parses command line input parameters in form of "-a <a> -b <b> etc.", where "-a" is a parameter switch and "a" is the value of the parameter
  * The following structure of configuration of parameters has to be passed to the parsing function:
 */
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 class InputParameter {
 }
 class InputParameters {
 }
-module.exports = async (inputParameters, inputCallBack) => {
+module.exports = (inputParameters, inputCallBack) => __awaiter(this, void 0, void 0, function* () {
     const params = {};
     for (const el of inputParameters.config) {
         // if the argument is present via cli, resolve and continue
@@ -25,7 +33,7 @@ module.exports = async (inputParameters, inputCallBack) => {
         if (el.prompt) {
             if (!inputCallBack)
                 return Promise.reject(`${el.name} parameter requires inputCallBack function, which is not provided to params-js parser`);
-            params[el.name] = await inputCallBack(el);
+            params[el.name] = yield inputCallBack(el);
             continue;
         }
         // set the default value if present
@@ -38,4 +46,4 @@ module.exports = async (inputParameters, inputCallBack) => {
             return Promise.reject(el.error_msg || "Missing mandatory parameter " + el.name);
     }
     return Promise.resolve(params);
-};
+});
