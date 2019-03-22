@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/masteris777/params-js.svg?branch=master)](https://travis-ci.org/masteris777/params-js)
+
 # params-js
 
 
