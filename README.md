@@ -2,11 +2,11 @@
 
 [![Build Status](https://travis-ci.org/masteris777/params-js.svg?branch=master)](https://travis-ci.org/masteris777/params-js)
 
-## Example1: Parameter values passes via command line or as environment parameters 
+## Example1: values to be passed via command line or as environment parameters 
 
 ```json
 {
-    "description": "Example file: examples/example1.params.json",
+    "description": "Example file: example1.params.json",
     "config":[
         {
             "name": "host",
@@ -50,11 +50,11 @@ const config = require("example1.params.json");
 
 ```
 
-## Example2: Parameter values passes via command line or as environment parameters, or prompted  
+## Example2: values to be passed via command line, as environment parameters, or prompted  
 
 ```json
 {
-    "description": "Content of file example2.params.json: Username and password to be passed via cli, as env parameters or prompted for input",
+    "description": "Example file example2.params.json: Username and password to be passed via cli, as env parameters or prompted for input",
     "config": [
         {
             "name": "user",
