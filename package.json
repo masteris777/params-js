@@ -1,7 +1,7 @@
 {
   "name": "params-js",
   "version": "1.0.0",
-  "description": "This simple an universal Nodejs module that implements loading of an app configuration from JSON file, CLI, Evironment variables or command line prompt. ",
+  "description": "This simple Nodejs module implements loading of an app configuration from a JSON file, CLI, environment variables or asynchronous input.",
   "main": "params-js.js",
   "scripts": {
     "build": "tsc && nyc mocha test/test.js",
@@ -17,12 +17,13 @@
     "config",
     "parameters",
     "params",
-    "CLI",
-    "Environment",
-    "ENV",
-    "prompt"
+    "cli",
+    "environment",
+    "env",
+    "prompt",
+    "commander"
   ],
-  "author": "marijus.masteika@teliacompany.com",
+  "author": "masteris@gmail.com",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/marijus-masteika/params-js/issues"

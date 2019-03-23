@@ -1,8 +1,9 @@
 # params-js
-
 [![Build Status](https://travis-ci.org/masteris777/params-js.svg?branch=master)](https://travis-ci.org/masteris777/params-js)
+This simple Nodejs module implements loading of an app configuration from a JSON file, CLI, environment variables or asynchronous input.
 
-## Example1: values to be passed via command line or as environment parameters 
+## Example1: 
+Values to be passed via command line or as environment parameters 
 
 ```json
 {
@@ -50,7 +51,8 @@ const config = require("example1.params.json");
 
 ```
 
-## Example2: values to be passed via command line, as environment parameters, or prompted  
+## Example2: 
+Values to be passed via command line, as environment parameters, or prompted  
 
 ```json
 {
