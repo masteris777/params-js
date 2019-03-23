@@ -1,5 +1,6 @@
-# params-js
 [![Build Status](https://travis-ci.org/masteris777/params-js.svg?branch=master)](https://travis-ci.org/masteris777/params-js)
+
+# params-js
 This simple Nodejs module implements loading of an app configuration from a JSON file, CLI, environment variables or asynchronous input.
 
 ## Example1: 
