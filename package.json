@@ -1,6 +1,6 @@
 {
   "name": "params-js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This simple Nodejs module implements loading of an app configuration from a JSON file, CLI, environment variables or asynchronous input.",
   "main": "params-js.js",
   "types": "params-js.d.ts",
