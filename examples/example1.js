@@ -5,6 +5,6 @@ const config = require("../examples/example1.params.json");
     const params = await params_parser(config);
 
     console.log(params);
-    // should print {temp_scale: "F"}
+    // { host: 'myhost.com', port: '443', secure: '-s' }
 
 })()
