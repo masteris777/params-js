@@ -2,11 +2,11 @@
 
 [![Build Status](https://travis-ci.org/masteris777/params-js.svg?branch=master)](https://travis-ci.org/masteris777/params-js)
 
-## Example of 
+## Example1: Parameter values passes via command line or as environment parameters 
 
 ```json
 {
-    "description": "Example file: example.params.json",
+    "description": "Example file: examples/example1.params.json",
     "config":[
         {
             "name": "host",
@@ -33,12 +33,12 @@
 ```
 
 ```
-node examples/example1.js -h myhost.com -s
+node example1.js -h myhost.com -s
 ```
 
 ```js
-const params_parser = require("../params-js");
-const config = require("../examples/example1.params.json");
+const params_parser = require("params-js");
+const config = require("example1.params.json");
 
 (async()=>{
     const params = await params_parser(config);
@@ -47,5 +47,43 @@ const config = require("../examples/example1.params.json");
     // { host: 'myhost.com', port: '443', secure: '-s' }
 
 })()
+
+```
+
+## Example2: Parameter values passes via command line or as environment parameters, or prompted  
+
+```json
+{
+    "description": "Content of file example2.params.json: Username and password to be passed via cli, as env parameters or prompted for input",
+    "config": [
+        {
+            "name": "user",
+            "description": "user value to be pr",
+            "switch": "-u",
+            "pos": 1,
+            "prompt": "Please specify username:"
+        },
+        {
+            "name": "password",
+            "description": "",
+            "switch": "-p",
+            "pos": 1,
+            "prompt": "Please specify password:",
+            "secret": true
+        }
+    ]
+}
+```
+
+```js
+const config = require("example2.params.json");
+const params = await params_parser(config, async item => {
+    return item.secret ? await secureInput(item.prompt) : await plainInput(item.prompt);
+    /*
+        Please specify username: admin
+        Please specify password: ************
+    */
+});
+console.log(params);
 
 ```

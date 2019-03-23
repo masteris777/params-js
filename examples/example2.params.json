@@ -1,0 +1,20 @@
+{
+    "description": "Username and password to be passed via cli, as env parameters or prompted for input",
+    "config": [
+        {
+            "name": "user",
+            "description": "user value to be pr",
+            "switch": "-u",
+            "pos": 1,
+            "prompt": "Please specify username:"
+        },
+        {
+            "name": "password",
+            "description": "",
+            "switch": "-p",
+            "pos": 1,
+            "prompt": "Please specify password:",
+            "secret": true
+        }
+    ]
+}

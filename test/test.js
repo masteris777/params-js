@@ -3,9 +3,6 @@ const assert = require('assert');
 const configurator_fn = require("../params-js");
 const cases_to_test = require("./test.cases.json");
 
-
-
-
 describe('Parsing tests', () => {
 
     for (const case_to_test of cases_to_test) {
@@ -44,7 +41,6 @@ describe('Parsing tests', () => {
     }
 
 });
-
 
 describe('Callback tests', async () => {
     it("Should reject if no callback function for input provided", async () => {
