@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "This simple Nodejs module implements loading of an app configuration from a JSON file, CLI, environment variables or asynchronous input.",
   "main": "params-js.js",
+  "types": "params-js.d.ts",
   "scripts": {
     "build": "tsc && nyc mocha test/test.js",
     "test": "mocha test/test.js",
