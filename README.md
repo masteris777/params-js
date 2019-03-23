@@ -3,6 +3,10 @@
 # params-js
 This simple Nodejs module implements loading of an app configuration from a JSON file, CLI, environment variables or asynchronous input.
 
+## Installation
+
+  `npm install @masteris/params-js`
+
 ## Example1: 
 Values to be passed via command line or as environment parameters 
 
